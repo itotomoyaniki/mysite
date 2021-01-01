@@ -1,0 +1,47 @@
+package javastudy;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class やり方 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner s = new Scanner(System.in);
+		Random r = new Random();
+		
+		System.out.println("ゲームが始まります");
+		int startbottom=s.nextInt();
+		double a=match();
+		System.out.println("終了しました 合計は"+a+"文字です");
+		System.out.println("あなたの平均は１秒間に"+a/60+"文字です");
+	}
+//	文字列の一致のメソッド
+	static int match() {
+		Scanner s = new Scanner(System.in);
+		Random r = new Random();
+		int wordsum=0;
+		int time=0;
+		long start=System.currentTimeMillis();
+		long end=start+60*1000;
+		while(System.currentTimeMillis()<end) {
+	
+			String[]randamWord= {"いいちこ","あかきりしま","サケとば","だいなごんあずき","ペプシマン","きんにくマン","ウォーズマン","ポップインシャワー"};
+			int randam=r.nextInt(8);
+			System.out.println("この文字を入力してください　"+randamWord[randam]);
+			String word=s.next();	
+			
+				if(word.equals(randamWord[randam])) {
+					System.out.println("一致しました　"+randamWord[randam]);
+					int sum=word.length();
+					wordsum+=sum;
+					System.out.println();
+				}
+			 	else{
+			 		System.out.println("一致しませんでした");
+			 		System.out.println();
+			 		}
+	}
+		return wordsum; 
+	}
+}
